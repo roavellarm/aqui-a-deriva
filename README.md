@@ -1,3 +1,3 @@
 # AQUI À DERIVA
 
-Versão virtual da instalação Aqui à deriva da artista Letícia Bertagna
+Projeto em desenvolvimento para a versão virtual da instalação _**Aqui à deriva**_ da artista [Letícia Bertagna](https://leticiabertagna.wordpress.com/)
