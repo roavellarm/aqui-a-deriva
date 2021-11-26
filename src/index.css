@@ -3,15 +3,17 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 body {
   font-family: 'Lora', serif;
-  /* color: #eeef80; */
-  color: pink;
+  color: #eeef80;
+  /* color: pink; */
   background: #000000;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  cursor: url('./images/prego.gif'), auto;
 }
 
 @media (max-width: 1080px) {
