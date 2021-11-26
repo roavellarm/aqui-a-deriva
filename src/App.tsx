@@ -6,7 +6,7 @@ const App = () => {
   const fundo = new Audio('./audios/audio_fundo.mp3')
 
   useEffect(() => {
-    fundo.play().catch((err) => console.log(err))
+    fundo.play().catch((err) => console.log(err)) // eslint-disable-line
   }, []) // eslint-disable-line
 
   return (
