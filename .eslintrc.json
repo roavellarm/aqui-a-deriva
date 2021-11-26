@@ -32,7 +32,7 @@
     "react/function-component-definition": [
       2,
       {
-        "namedComponents": "function-declaration",
+        "namedComponents": "arrow-funtion",
         "unnamedComponents": "arrow-function"
       }
     ]
