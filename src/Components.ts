@@ -8,6 +8,8 @@ export const Container = styled.div`
   flex-direction: column;
   width: 100%;
   height: 100vh;
+  justify-content: center;
+  align-items: center;
   background: url(${bg});
   background-position: center;
   background-repeat: no-repeat;
@@ -47,4 +49,8 @@ export const Lamp = styled.div<IValues>`
     color: #eeef80;
     cursor: none;
   }
+`
+
+export const InitialButton = styled.div`
+  font-size: ${() => pixelToRem(70)};
 `
