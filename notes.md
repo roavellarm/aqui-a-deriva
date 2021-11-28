@@ -23,11 +23,11 @@
 - **aquele:** 40
 - **agora:** 40
 
-# :tv: **VÍDEO FUNDO**
+# :film_frames: **VÍDEO FUNDO**
 
 **`video_fundo_loop.mp4`**
 
-# :sound: **ÁUDIO DE FUNDO**
+# :loud_sound: **ÁUDIO DE FUNDO**
 
 ##### _(volume -20 dB parâmetro Adobe Première)_
 
