@@ -23,18 +23,20 @@ interface Props extends ICoordinates {
 
 export const StyledStar = styled.div<Props>`
   position: absolute;
-  /* background: rgba(55, 85, 24, 0.6); */
+  background: rgba(55, 85, 24, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
 
   width: ${({ coordinates: x }) => `${x.w}vw`};
-  height: ${({ coordinates: x }) => `${x.h}vh`};
+  height: ${({ coordinates: y }) => `${y.h}vh`};
+  font-size: ${({ coordinates: z }) => pixelToRem(z.f)};
+
   left: ${({ coordinates: x }) => (x.l !== undefined ? `${x.l}vw` : 'auto')};
   right: ${({ coordinates: x }) => (x.r !== undefined ? `${x.r}vw` : 'auto')};
-  top: ${({ coordinates: x }) => (x.t !== undefined ? `${x.t}vh` : 'auto')};
-  bottom: ${({ coordinates: x }) => (x.b !== undefined ? `${x.b}vh` : 'auto')};
-  font-size: ${({ coordinates: x }) => pixelToRem(x.f)};
+  top: ${({ coordinates: y }) => (y.t !== undefined ? `${y.t}vh` : 'auto')};
+  bottom: ${({ coordinates: y }) => (y.b !== undefined ? `${y.b}vh` : 'auto')};
+
   color: ${({ isPlaying }) => (isPlaying ? '#eeef80' : 'transparent')};
   transition: all ease-in-out 0.5s;
 
@@ -46,4 +48,9 @@ export const StyledStar = styled.div<Props>`
 
 export const StartHere = styled.div`
   font-size: ${() => pixelToRem(70)};
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.5;
+  }
 `

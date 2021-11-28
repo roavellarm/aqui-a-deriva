@@ -12,7 +12,8 @@ body {
   background: #000000;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  cursor: url('./images/prego.gif'), auto;
+  /* cursor: url('./images/prego.gif'), auto; */
+  cursor: crosshair;
 }
 
 @media (max-width: 1080px) {
