@@ -36,7 +36,7 @@ export const StyledStar = styled.div<Props>`
   bottom: ${({ coordinates: x }) => (x.b !== undefined ? `${x.b}vh` : 'auto')};
   font-size: ${({ coordinates: x }) => pixelToRem(x.f)};
   color: ${({ isPlaying }) => (isPlaying ? '#eeef80' : 'transparent')};
-  transition: all ease-in-out 0.9s;
+  transition: all ease-in-out 0.5s;
 
   &:hover {
     color: #eeef80;

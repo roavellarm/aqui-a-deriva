@@ -9,7 +9,7 @@ const HereAdrift = () => {
 
   const handleBigBang = () => {
     bigBang(true)
-    backgroundSound.volume = 0.1
+    backgroundSound.volume = 0.5
     return backgroundSound.play()
   }
 
