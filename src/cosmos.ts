@@ -2,7 +2,7 @@ export const stars = [
   {
     name: 'hoje',
     sound: new Audio('./audios/hoje.mp3'),
-    coordinates: { f: 35, w: 8, h: 8, l: 11, t: 14.5, b: 15 },
+    coordinates: { f: 35, w: 8, h: 8, l: 11, t: 14.5 },
   },
   {
     name: 'lá',

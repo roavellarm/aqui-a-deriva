@@ -1,6 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { HereAdrift } from './HereAdrift'
-import './global.css'
+import GlobalStyles from 'global'
+import { HereAdrift } from 'HereAdrift'
 
-ReactDOM.render(<HereAdrift />, document.getElementById('root'))
+ReactDOM.render(
+  <>
+    <GlobalStyles />
+    <HereAdrift />
+  </>,
+  document.getElementById('root')
+)

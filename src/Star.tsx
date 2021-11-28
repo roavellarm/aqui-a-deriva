@@ -1,4 +1,4 @@
-import React, { useEffect, useState, memo } from 'react'
+import React, { useEffect, useState, memo, useCallback } from 'react'
 import { IStar } from 'types'
 import { StyledStar } from 'styles'
 
@@ -10,21 +10,21 @@ const Star = memo(({ data }: Props) => {
   const { sound, coordinates, name } = data
   const [isPlaying, setIsPlaying] = useState(false)
 
-  const handleStar = () => {
+  const shineTheStar = () => {
     sound.volume = 0.5 // eslint-disable-line
     sound.play()
     return setIsPlaying(true)
   }
 
-  // console.log(`${name} is playing: ${isPlaying}`) // eslint-disable-line
+  const updateSoundState = useCallback(() => setIsPlaying(false), [])
 
   useEffect(() => {
-    sound.addEventListener('ended', () => setIsPlaying(false))
-    return () => sound.removeEventListener('ended', () => setIsPlaying(false))
-  }, [sound])
+    sound.addEventListener('ended', updateSoundState)
+    return () => sound.removeEventListener('ended', updateSoundState)
+  }, [sound, updateSoundState])
 
   return (
-    <StyledStar coordinates={coordinates} isPlaying={isPlaying} onMouseOver={handleStar}>
+    <StyledStar coordinates={coordinates} isPlaying={isPlaying} onMouseOver={shineTheStar}>
       {name}
     </StyledStar>
   )
