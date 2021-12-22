@@ -46,9 +46,10 @@ export const StyledStar = styled.div<Props>`
   }
 `
 
-export const StartHere = styled.div`
+export const StartHere = styled.p`
   font-size: ${() => pixelToRem(70)};
   cursor: pointer;
+  transition: all ease 0.2s;
 
   &:hover {
     opacity: 0.5;
