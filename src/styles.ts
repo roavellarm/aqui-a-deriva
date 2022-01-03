@@ -1,8 +1,7 @@
 import styled from 'styled-components'
 import bg from 'images/background.gif'
 import { ICoordinates } from 'types'
-
-const pixelToRem = (pixelValue: number) => `${pixelValue / 15}rem`
+import { pixelToRem } from 'helper'
 
 export const Universe = styled.div`
   display: flex;
@@ -17,25 +16,22 @@ export const Universe = styled.div`
   background-size: cover;
 `
 
-interface Props extends ICoordinates {
-  isPlaying: boolean
-}
-
-export const StyledStar = styled.div<Props>`
+export const StyledStar = styled.div<ICoordinates>`
   position: absolute;
-  /* background: rgba(55, 85, 24, 0.6); */
+  z-index: 999 !important;
+  background: rgba(55, 85, 24, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
 
-  width: ${({ coordinates: x }) => `${x.w}vw`};
-  height: ${({ coordinates: y }) => `${y.h}vh`};
-  font-size: ${({ coordinates: z }) => pixelToRem(z.f)};
+  width: ${({ w }) => `${w}vw`};
+  height: ${({ h }) => `${h}vh`};
+  font-size: ${({ f }) => pixelToRem(f)};
 
-  left: ${({ coordinates: x }) => (x.l !== undefined ? `${x.l}vw` : 'auto')};
-  right: ${({ coordinates: x }) => (x.r !== undefined ? `${x.r}vw` : 'auto')};
-  top: ${({ coordinates: y }) => (y.t !== undefined ? `${y.t}vh` : 'auto')};
-  bottom: ${({ coordinates: y }) => (y.b !== undefined ? `${y.b}vh` : 'auto')};
+  left: ${({ l }) => (l !== undefined ? `${l}vw` : 'auto')};
+  right: ${({ r }) => (r !== undefined ? `${r}vw` : 'auto')};
+  top: ${({ t }) => (t !== undefined ? `${t}vh` : 'auto')};
+  bottom: ${({ b }) => (b !== undefined ? `${b}vh` : 'auto')};
 
   color: ${({ isPlaying }) => (isPlaying ? '#eeef80' : 'transparent')};
   transition: all ease-in-out 0.5s;

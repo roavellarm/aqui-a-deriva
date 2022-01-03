@@ -1,22 +1,35 @@
 import React, { useEffect, useState, memo, useCallback } from 'react'
-import { IStar } from 'types'
+import { IPosition, IStar } from 'types'
 import { StyledStar } from 'styles'
 
-interface Props {
-  data: IStar
+interface StarProps extends IStar {
+  touchPosition: IPosition
 }
 
-const Star = memo(({ data }: Props) => {
-  const { sound, coordinates, name } = data
+const Star = memo(({ name, sound, location, touchPosition }: StarProps) => {
   const [isPlaying, setIsPlaying] = useState(false)
+  const { coordinates, locationArea } = location
+  const { minX, maxX, minY, maxY } = locationArea
 
-  const shineTheStar = () => {
+  const shineTheStar = useCallback(() => {
     sound.volume = 0.5 // eslint-disable-line
     sound.play()
     return setIsPlaying(true)
-  }
+  }, [sound])
 
   const updateSoundState = useCallback(() => setIsPlaying(false), [])
+
+  const isTouchingTheStar = useCallback(() => {
+    if (!touchPosition) return undefined
+    const { x, y } = touchPosition
+    if (x >= minX && x <= maxX && y >= minY && y <= maxY) return shineTheStar()
+    return undefined
+  }, [maxX, maxY, minX, minY, shineTheStar, touchPosition])
+
+  useEffect(() => {
+    console.log(coordinates, locationArea, touchPosition, window.innerWidth, window.innerHeight)
+    isTouchingTheStar()
+  }, [touchPosition]) // eslint-disable-line
 
   useEffect(() => {
     sound.addEventListener('ended', updateSoundState)
@@ -24,9 +37,31 @@ const Star = memo(({ data }: Props) => {
   }, [sound, updateSoundState])
 
   return (
-    <StyledStar coordinates={coordinates} isPlaying={isPlaying} onMouseOver={shineTheStar}>
-      {name}
-    </StyledStar>
+    <>
+      <StyledStar
+        {...coordinates}
+        isPlaying={isPlaying}
+        onDragOverCapture={shineTheStar}
+        onMouseOver={shineTheStar}
+      >
+        {name}
+      </StyledStar>
+      {/* <div
+        style={{
+          position: 'absolute',
+          background: 'red',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          left: `${minX}vw`,
+          top: `${coordinates.t}vh`,
+          width: `${maxX - minX}vw`,
+          height: `${maxY - minY}vh`,
+        }}
+      >
+        .a
+      </div> */}
+    </>
   )
 })
 
