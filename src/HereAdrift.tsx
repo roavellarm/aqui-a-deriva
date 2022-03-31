@@ -5,6 +5,7 @@ import { Universe, StartHere } from 'styles'
 
 const HereAdrift = () => {
   const [hasBegin, bigBang] = useState(false)
+  const [currentTouchPosition, setCurrentTouchPosition] = useState({ x: 0, y: 0 })
   const backgroundSound = new Audio('./audios/audio_fundo.mp3') // eslint-disable-line
 
   const playBackgroundSound = useCallback(() => {
@@ -17,14 +18,21 @@ const HereAdrift = () => {
     return playBackgroundSound()
   }
 
+  const handleTouchPosition = (event: any) => {
+    const { clientX, clientY } = event.nativeEvent.touches[0]
+    setCurrentTouchPosition({ x: clientX, y: clientY })
+  }
+
   useEffect(() => {
     backgroundSound.addEventListener('ended', playBackgroundSound)
   }, [backgroundSound, playBackgroundSound])
 
   return (
-    <Universe>
+    <Universe onTouchMove={handleTouchPosition}>
       {hasBegin ? (
-        stars.map((star) => <Star data={star} key={star.name} />)
+        stars.map((star) => (
+          <Star data={star} currentTouchPosition={currentTouchPosition} key={star.name} />
+        ))
       ) : (
         <StartHere onClick={handleBigBang}>aqui</StartHere>
       )}
