@@ -40,6 +40,13 @@ export const StyledStar = styled.div<Props>`
   color: ${({ isPlaying }) => (isPlaying ? '#eeef80' : 'transparent')};
   transition: all ease-in-out 0.5s;
 
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  user-select: none;
+
   &:hover {
     color: #eeef80;
     cursor: none;
