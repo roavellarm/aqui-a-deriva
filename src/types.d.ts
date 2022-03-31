@@ -16,7 +16,25 @@ export interface ICoordinates {
   }
 }
 
-export interface IStar extends ICoordinates {
+export interface IMobile {
+  mobile: {
+    // f: number
+    // w: number
+    // h: number
+    // l: number
+    // t: number
+    isPlaying?: boolean
+    f: number
+    w: number
+    h: number
+    l: number
+    r?: number
+    t: number
+    b?: number
+  }
+}
+
+export interface IStar extends IMobile, ICoordinates {
   name: string
   sound: HTMLAudioElement
 }

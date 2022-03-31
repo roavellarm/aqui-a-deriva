@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import bg from 'images/background.gif'
-import { ICoordinates } from 'types'
+import { IMobile } from 'types'
 
 const pixelToRem = (pixelValue: number) => `${pixelValue / 15}rem`
 
@@ -17,25 +17,27 @@ export const Universe = styled.div`
   background-size: cover;
 `
 
-interface Props extends ICoordinates {
+interface Props extends IMobile {
   isPlaying: boolean
 }
 
 export const StyledStar = styled.div<Props>`
   position: absolute;
-  /* background: rgba(55, 85, 24, 0.6); */
+  background: rgba(55, 85, 24, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
 
-  width: ${({ coordinates: x }) => `${x.w}vw`};
-  height: ${({ coordinates: y }) => `${y.h}vh`};
-  font-size: ${({ coordinates: z }) => pixelToRem(z.f)};
+  width: ${({ mobile: x }) => `${x.w}vw`};
+  height: ${({ mobile: y }) => `${y.h}vh`};
+  font-size: ${({ mobile: z }) => pixelToRem(z.f)};
 
-  left: ${({ coordinates: x }) => (x.l !== undefined ? `${x.l}vw` : 'auto')};
-  right: ${({ coordinates: x }) => (x.r !== undefined ? `${x.r}vw` : 'auto')};
-  top: ${({ coordinates: y }) => (y.t !== undefined ? `${y.t}vh` : 'auto')};
-  bottom: ${({ coordinates: y }) => (y.b !== undefined ? `${y.b}vh` : 'auto')};
+  /* left: ${({ mobile: x }) => (x.l !== undefined ? `${x.l}vw` : 'auto')};
+  right: ${({ mobile: x }) => (x?.r !== undefined ? `${x?.r}vw` : 'auto')};
+  top: ${({ mobile: y }) => (y.t !== undefined ? `${y.t}vh` : 'auto')};
+  bottom: ${({ mobile: y }) => (y.b !== undefined ? `${y.b}vh` : 'auto')}; */
+  left: ${({ mobile: x }) => `${x.l}vw`};
+  top: ${({ mobile: y }) => `${y.t}vh`};
 
   color: ${({ isPlaying }) => (isPlaying ? '#eeef80' : 'transparent')};
   transition: all ease-in-out 0.5s;
