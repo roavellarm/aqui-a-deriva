@@ -23,7 +23,7 @@ interface Props extends ICoordinates {
 
 export const StyledStar = styled.div<Props>`
   position: absolute;
-  /* background: rgba(55, 85, 24, 0.6); */
+  background: rgba(55, 85, 24, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
