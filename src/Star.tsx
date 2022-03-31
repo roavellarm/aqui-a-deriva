@@ -35,8 +35,8 @@ const Star = memo(({ data, currentTouchPosition }: Props) => {
   }
 
   const handleMobile = () => {
-    const deviceWidth = 375
-    const deviceHeight = 667
+    const deviceWidth = 412
+    const deviceHeight = 892
     const { l, t, w, h, f } = data.mobile
     const { x, y } = currentTouchPosition
 
