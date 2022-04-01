@@ -1,11 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { stars } from 'cosmos'
+
 import { Star } from 'Star'
-import { Universe, StartHere } from 'styles'
+import { starsInfoList } from './cosmos'
+import { Universe, StartHere } from './styles'
 
 const HereAdrift = () => {
   const [hasBegin, bigBang] = useState(false)
-  const [currentTouchPosition, setCurrentTouchPosition] = useState({ x: 0, y: 0 })
+  const [touchPosition, setTouchPosition] = useState({ touchX: 0, touchY: 0 })
   const backgroundSound = new Audio('./audios/audio_fundo.mp3') // eslint-disable-line
 
   const playBackgroundSound = useCallback(() => {
@@ -20,7 +21,7 @@ const HereAdrift = () => {
 
   const handleTouchPosition = (event: any) => {
     const { clientX, clientY } = event.nativeEvent.touches[0]
-    setCurrentTouchPosition({ x: clientX, y: clientY })
+    return setTouchPosition({ touchX: clientX, touchY: clientY })
   }
 
   useEffect(() => {
@@ -30,8 +31,8 @@ const HereAdrift = () => {
   return (
     <Universe onTouchMove={handleTouchPosition}>
       {hasBegin ? (
-        stars.map((star) => (
-          <Star data={star} currentTouchPosition={currentTouchPosition} key={star.name} />
+        starsInfoList.map((starInfo) => (
+          <Star data={starInfo} touchPosition={touchPosition} key={starInfo.name} />
         ))
       ) : (
         <StartHere onClick={handleBigBang}>aqui</StartHere>

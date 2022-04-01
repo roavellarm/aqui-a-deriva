@@ -3,38 +3,19 @@ declare module '*.mp3' {
   export default mp3
 }
 
+export type TouchPosition = {
+  touchX: number
+  touchY: number
+}
 export interface ICoordinates {
-  coordinates: {
-    isPlaying?: boolean
-    f: number
-    w: number
-    h: number
-    l?: number
-    r?: number
-    t?: number
-    b?: number
-  }
+  f: number
+  w: number
+  h: number
+  x: number
+  y: number
 }
-
-export interface IMobile {
-  mobile: {
-    // f: number
-    // w: number
-    // h: number
-    // l: number
-    // t: number
-    isPlaying?: boolean
-    f: number
-    w: number
-    h: number
-    l: number
-    r?: number
-    t: number
-    b?: number
-  }
-}
-
-export interface IStar extends IMobile, ICoordinates {
+export interface IStar {
   name: string
   sound: HTMLAudioElement
+  coordinates: ICoordinates
 }
