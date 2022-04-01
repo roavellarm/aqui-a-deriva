@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
-export default createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
 
 * {
   padding: 0;
@@ -14,10 +14,10 @@ body {
   background: #000000;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* cursor: url('./images/prego.gif'), auto; */
   cursor: crosshair;
 }
 
+@media (max-width: 5000px) { html { font-size: 300%; } }
 @media (max-width: 4000px) { html { font-size: 257%; } }
 @media (max-width: 2500px) { html { font-size: 247%; } }
 @media (max-width: 2400px) { html { font-size: 237%; } }
